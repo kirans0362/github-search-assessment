@@ -1,0 +1,52 @@
+<div class="container" style="margin-top:18px">
+    <div class="alert alert-success" role="alert" *ngIf="search">
+        <h4 class="alert-heading">Repos found :{{pageMaxLength}}</h4>
+      </div>
+</div>
+<div class="container">
+    <table class="table" *ngIf="search">
+        <thead>
+        <tr>
+            <th scope="col">Login Name</th>
+            <th scope="col">User Type</th>
+            <th scope="col">Following</th>
+            <th scope="col">Followers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let users of displaySearch; let i= index">
+            <td><a href="{{users.items.html_url}}"  target="_blank">{{users.items.login}}</a></td> 
+            <td>{{users.items.type}}</td>
+            <td>{{users.following}}</td>
+            <td>{{users.followers}}</td>
+                <!-- <div *ngIf="search.userDetails" >
+                    <p>User Details:</p>
+    
+                </div></td> -->
+            <!-- <td><button  (click) = "moreDetails(users.items.login,i)" routerLinkActive="active">
+                Click here for more User Details</button>
+          -->
+            
+            <!-- <router-outlet></router-outlet> -->
+        </tr>
+        <tr>
+           
+        </tr>
+        </tbody>
+        <tfoot>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item" [ngClass]="pageNumber ==1 ? 'disabled':''">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" (click)="pageClick('previous')">Previous</a>
+                  </li>
+                  <li class="page-item" *ngFor="let numbers of pagenationOptions" [ngClass]="pageNumber== numbers ? 'active':''">
+                      <a class="page-link" (click)="pageChange(numbers)">{{numbers}}</a>
+                </li>
+                  <li class="page-item" [ngClass]="pageNumber == pagenationOptions.length? 'disabled':''">
+                    <a class="page-link" (click)="pageClick('next')">Next</a>
+                  </li>
+                </ul>
+              </nav>
+        </tfoot>
+    </table>
+</div>
