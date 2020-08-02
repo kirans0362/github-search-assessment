@@ -23,8 +23,7 @@ export class SearchresultsComponent implements OnInit {
     
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      this.value = params['value']; 
-     // console.log(this.value)
+      this.value = params['value']
       this.pagenationOptions =[];
       this.pageNumber=1;
     // API Call to get search results
@@ -80,26 +79,6 @@ export class SearchresultsComponent implements OnInit {
       this.pageNumber--;
       this.pageChange(this.pageNumber);
     }
-  }
-  moreDetails(value,i){
-    //this.router.navigate(['/search-results',value])
-    //rotuerLink="'/search-results'"
-    console.log(value,i);
-    this.search.userDetails=[]
-    this.searchService.getUserDetails(value)
-    .subscribe((userdetails)=> {
-      console.log(userdetails)
-      this.search.userDetails.push(userdetails);
-      // this.displaySearch.push({
-      //   userDetails:this.search.userDetails
-      // })
-    })
-
-      // if(this.search){
-      //   for(var i=0;i<this.search.items.length;i++){
-          
-      //   }
-      // }
   }
 
 }
